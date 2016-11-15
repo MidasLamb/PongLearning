@@ -195,8 +195,8 @@ Ball.prototype.render = function(ctx){
 }
 
 Ball.prototype.update = function() {
-    this.x += this.x_speed;
-    this.y += this.y_speed;
+    
+    
     
     var top_x = this.x - this.radius;
     var top_y = this.y - this.radius;
@@ -211,6 +211,9 @@ Ball.prototype.update = function() {
         this.y_speed = -1 * this.y_speed;
     }
     
+    
+    this.y += this.y_speed;
+    
     if (this.x <= 0){ //Ball out of bounds
         this.player.die();
     }
@@ -219,6 +222,8 @@ Ball.prototype.update = function() {
     if((this.x - this.radius) == (paddle.x + paddle.width) && this.y < (paddle.y+paddle.height) && this.y > paddle.y) {
         this.x_speed = -1 * this.x_speed;
     }
+    
+    this.x += this.x_speed;
     
 }
 
