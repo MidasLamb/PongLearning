@@ -2,7 +2,7 @@ var FPS = 60;
 var animate = function(callback) { window.setTimeout(callback, 1000/FPS) };
 
 var canvas = document.createElement('canvas');
-var width = 400;
+var width = 800;
 var height = 600;
 canvas.width = width;
 canvas.height = height;
@@ -81,7 +81,7 @@ Game.prototype.updateText = function(){
 
 var Player = function(ctx){
     this.color = getRandomColor();
-    this.randY = Math.floor(Math.random()*height) + 1;
+    this.randY = Math.floor(Math.random()*(height - 110)) + 10;
     this.paddle = new Paddle(this, this.color, this.randY);
     this.ball = new Ball(this, this.color, this.randY);
     this.ctx = ctx;
@@ -207,7 +207,7 @@ Ball.prototype.update = function() {
         this.x_speed = -1 * this.x_speed;
     }
     
-    if (top_y <= 1 || bottom_y >= height){
+    if (top_y < 0 || bottom_y >= height){
         this.y_speed = -1 * this.y_speed;
     }
     
